@@ -1,3 +1,6 @@
 - [x] Homepage completa: contenuti, sedi, CTA, recensioni placeholder e FAQ.
 - [x] Pagina Chi sono e tre pagine sede.
 - [x] Verifica visiva desktop/mobile e navigazione.
+- [ ] Rendere il diagramma dolore/origine interattivo al movimento, tocco e trascinamento.
+- [ ] Rimuovere la foto hero generata e usare una texture astratta nei toni del brand.
+- [ ] Verificare calore visivo e funzionamento su desktop/mobile.
