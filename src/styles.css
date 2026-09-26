@@ -107,3 +107,5 @@
   .hero-content > div > div:last-child { margin-top: 17px; gap: 8px; }
   .hero-content .h-13 { height: 44px; }
 }
+
+@media (max-width: 1023px) { .hero-photo { max-width: 320px; justify-self: start; } }

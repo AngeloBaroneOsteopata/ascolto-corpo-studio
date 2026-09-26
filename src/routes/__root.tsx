@@ -3,6 +3,7 @@ import { Outlet, Link, createRootRouteWithContext, HeadContent, Scripts } from "
 import { useState, type ReactNode } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { locations, treatments, phone, email, whatsapp } from "@/lib/site-data";
 import appCss from "../styles.css?url";
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
@@ -36,9 +37,9 @@ function SiteHeader() {
   const [open, setOpen] = useState(false);
   const links = [
     { to: "/chi-sono", label: "Chi sono" },
-    { to: "/#come-lavoro", label: "Come lavoro" },
     { to: "/#trattamenti", label: "Trattamenti" },
     { to: "/#sedi", label: "Dove ricevo" },
+    { to: "/#recensioni", label: "Recensioni" },
   ];
   return <header className="relative z-20 bg-background border-b border-border">
     <div className="site-container flex h-[84px] items-center justify-between gap-5">
@@ -46,21 +47,25 @@ function SiteHeader() {
       <nav aria-label="Navigazione principale" className="hidden lg:flex items-center gap-9 text-[14px] font-medium">
         {links.map(link => link.to.includes('#') ? <a key={link.label} href={link.to} className="hover:underline underline-offset-8">{link.label}</a> : <Link key={link.label} to={link.to} className="hover:underline underline-offset-8">{link.label}</Link>)}
       </nav>
-      <div className="hidden lg:block"><Button asChild size="lg"><a href="https://wa.me/393288778394" target="_blank" rel="noopener noreferrer">Prenota una visita</a></Button></div>
+      <div className="hidden lg:block"><Button asChild size="lg"><a href="/#prenota">Prenota una seduta</a></Button></div>
       <Button variant="ghost" size="icon" className="lg:hidden" aria-label={open ? 'Chiudi menu' : 'Apri menu'} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</Button>
     </div>
     {open && <nav aria-label="Navigazione mobile" className="lg:hidden site-container flex flex-col gap-5 py-6 border-t border-border text-base">
       {links.map(link => link.to.includes('#') ? <a key={link.label} href={link.to} onClick={() => setOpen(false)}>{link.label}</a> : <Link key={link.label} to={link.to} onClick={() => setOpen(false)}>{link.label}</Link>)}
-      <a href="https://wa.me/393288778394" target="_blank" rel="noopener noreferrer" className="font-medium">Prenota una visita</a>
+      <Button asChild className="self-start"><a href="/#prenota" onClick={() => setOpen(false)}>Prenota una seduta</a></Button>
     </nav>}
   </header>;
 }
 function SiteFooter() {
-  return <footer className="bg-deep-green text-primary-foreground py-14">
-    <div className="site-container grid gap-10 md:grid-cols-[1fr_1fr] md:gap-20">
-      <div><Link to="/" className="font-display text-4xl">Angelo Barone</Link><p className="mt-2 text-sm">Osteopata D.O. · Iscritto al R.O.I.</p></div>
-      <div className="flex flex-wrap gap-x-8 gap-y-3 text-sm"><Link to="/chi-sono">Chi sono</Link><Link to="/sedi/san-donato-milanese">San Donato Milanese</Link><Link to="/sedi/cantu">Cantù</Link><Link to="/sedi/giussano">Giussano</Link></div>
+  const heading = "text-light-green text-sm mb-4";
+  return <footer className="bg-deep-green text-primary-foreground pt-16 pb-10">
+    <div className="site-container grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_.8fr_1fr_1fr] lg:gap-14">
+      <div><Link to="/" className="font-display text-3xl leading-tight">Angelo Barone — Osteopata D.O.</Link><p className="mt-3 text-[15px] leading-relaxed max-w-[300px]">Osteopata con studio a San Donato Milanese, Cantù e Giussano.</p></div>
+      <div><p className={heading}>Sedi</p><ul className="space-y-2 text-[15px]">{locations.map(l => <li key={l.slug}><Link to={l.slug}>{l.name}</Link></li>)}</ul></div>
+      <div><p className={heading}>Trattamenti</p><ul className="space-y-2 text-[15px]">{footerTreatments.map(slug => { const t = treatments.find(x => x.slug === slug)!; return <li key={slug}><Link to="/trattamenti/$slug" params={{ slug }}>{t.title}</Link></li>; })}</ul></div>
+      <div><p className={heading}>Contatti</p><ul className="space-y-2 text-[15px]"><li><a href={phone.href}>{phone.label}</a></li><li><a href={`mailto:${email}`} className="break-all">{email}</a></li><li><a href={whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp</a></li></ul></div>
     </div>
-    <div className="site-container border-t border-light-green/30 mt-12 pt-6 text-sm text-light-green leading-relaxed">Le informazioni contenute in questo sito hanno finalità divulgativa e non sostituiscono il parere di un professionista sanitario qualificato.</div>
+    <div className="site-container border-t border-light-green/30 mt-12 pt-6 text-sm text-light-green leading-relaxed space-y-2"><p>Le informazioni contenute in questo sito hanno finalità divulgativa e non sostituiscono il parere di un professionista sanitario qualificato.</p><p>© 2026 Angelo Barone — Osteopata D.O. · P.IVA IT10629980961</p></div>
   </footer>;
 }
+const footerTreatments = ["mal-di-schiena", "cervicale-e-cefalee", "pavimento-pelvico", "gravidanza", "sport-e-postura", "disturbi-viscerali"];
