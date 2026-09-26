@@ -1,0 +1,3 @@
+- [ ] Homepage completa: contenuti, sedi, CTA, recensioni placeholder e FAQ.
+- [ ] Pagina Chi sono e tre pagine sede.
+- [ ] Verifica visiva desktop/mobile e navigazione.
