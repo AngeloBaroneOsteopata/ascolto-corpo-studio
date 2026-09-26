@@ -35,7 +35,7 @@ export function OriginDiagram() {
     onPointerMove={updatePointer}
     onPointerDown={event => { event.currentTarget.setPointerCapture(event.pointerId); updatePointer(event); }}
     onPointerUp={event => { if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId); }}
-    onPointerLeave={() => setPointer(null)}
+    onPointerLeave={event => { if (event.pointerType === 'mouse') setPointer(null); }}
     onBlur={() => setPointer(null)}
     onKeyDown={handleKeyDown}
   >
