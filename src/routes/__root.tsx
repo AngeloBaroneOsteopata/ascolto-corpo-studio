@@ -1,126 +1,66 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import {
-  Outlet,
-  Link,
-  createRootRouteWithContext,
-  useRouter,
-  HeadContent,
-  Scripts,
-} from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
-
+import { Outlet, Link, createRootRouteWithContext, HeadContent, Scripts } from "@tanstack/react-router";
+import { useState, type ReactNode } from "react";
+import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
-
-function NotFoundComponent() {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
-        </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Go home
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
-  console.error(error);
-  const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
-
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
-        </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
-        </p>
-        <div className="mt-6 flex flex-wrap justify-center gap-2">
-          <button
-            onClick={() => {
-              router.invalidate();
-              reset();
-            }}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Try again
-          </button>
-          <a
-            href="/"
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
-          >
-            Go home
-          </a>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "stylesheet", href: appCss },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" },
     ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
-  notFoundComponent: NotFoundComponent,
-  errorComponent: ErrorComponent,
+  notFoundComponent: () => <main className="site-container section-space"><h1 className="display-heading text-6xl">Pagina non trovata</h1><Button asChild className="mt-8"><Link to="/">Torna all'inizio</Link></Button></main>,
 });
 
 function RootShell({ children }: { children: ReactNode }) {
-  return (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  );
+  return <html lang="it"><head><HeadContent /></head><body>{children}<Scripts /></body></html>;
 }
-
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-
-  return (
-    <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
-    </QueryClientProvider>
-  );
+  return <QueryClientProvider client={queryClient}><SiteHeader /><Outlet /><SiteFooter /></QueryClientProvider>;
+}
+function SiteHeader() {
+  const [open, setOpen] = useState(false);
+  const links = [
+    { to: "/chi-sono", label: "Chi sono" },
+    { to: "/#come-lavoro", label: "Come lavoro" },
+    { to: "/#trattamenti", label: "Trattamenti" },
+    { to: "/#sedi", label: "Dove ricevo" },
+  ];
+  return <header className="relative z-20 bg-background border-b border-border">
+    <div className="site-container flex h-[84px] items-center justify-between gap-5">
+      <Link to="/" className="flex flex-col leading-none shrink-0" aria-label="Angelo Barone, torna alla homepage"><span className="font-display text-[32px] font-medium">Angelo Barone</span><span className="mt-1 text-[10px] uppercase tracking-[.18em]">Osteopata D.O.</span></Link>
+      <nav aria-label="Navigazione principale" className="hidden lg:flex items-center gap-9 text-[14px] font-medium">
+        {links.map(link => link.to.includes('#') ? <a key={link.label} href={link.to} className="hover:underline underline-offset-8">{link.label}</a> : <Link key={link.label} to={link.to} className="hover:underline underline-offset-8">{link.label}</Link>)}
+      </nav>
+      <div className="hidden lg:block"><Button asChild size="lg"><a href="https://wa.me/393288778394" target="_blank" rel="noopener noreferrer">Prenota una visita</a></Button></div>
+      <Button variant="ghost" size="icon" className="lg:hidden" aria-label={open ? 'Chiudi menu' : 'Apri menu'} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</Button>
+    </div>
+    {open && <nav aria-label="Navigazione mobile" className="lg:hidden site-container flex flex-col gap-5 py-6 border-t border-border text-base">
+      {links.map(link => link.to.includes('#') ? <a key={link.label} href={link.to} onClick={() => setOpen(false)}>{link.label}</a> : <Link key={link.label} to={link.to} onClick={() => setOpen(false)}>{link.label}</Link>)}
+      <a href="https://wa.me/393288778394" target="_blank" rel="noopener noreferrer" className="font-medium">Prenota una visita</a>
+    </nav>}
+  </header>;
+}
+function SiteFooter() {
+  return <footer className="bg-deep-green text-primary-foreground py-14">
+    <div className="site-container grid gap-10 md:grid-cols-[1fr_1fr] md:gap-20">
+      <div><Link to="/" className="font-display text-4xl">Angelo Barone</Link><p className="mt-2 text-sm">Osteopata D.O. · Iscritto al R.O.I.</p></div>
+      <div className="flex flex-wrap gap-x-8 gap-y-3 text-sm"><Link to="/chi-sono">Chi sono</Link><Link to="/sedi/san-donato-milanese">San Donato Milanese</Link><Link to="/sedi/cantu">Cantù</Link><Link to="/sedi/giussano">Giussano</Link></div>
+    </div>
+    <div className="site-container border-t border-light-green/30 mt-12 pt-6 text-sm text-light-green leading-relaxed">Le informazioni contenute in questo sito hanno finalità divulgativa e non sostituiscono il parere di un professionista sanitario qualificato.</div>
+  </footer>;
 }
