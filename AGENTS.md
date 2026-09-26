@@ -8,3 +8,6 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep public content and location facts in `src/lib/site-data.ts`, shared by the homepage and location pages, so hours and prices stay consistent.
+- Keep the site static and use direct WhatsApp contact rather than online booking, because personal contact is part of the clinical method.
