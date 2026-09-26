@@ -1,9 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { ContactButtons } from '@/components/site-sections';
-import { locations } from '@/lib/site-data';
-const place = locations[1];
+import { LocationPage } from '@/components/location-page';
+import { locations, ogImageMeta } from '@/lib/site-data';
 export const Route = createFileRoute('/sedi/cantu')({ head: () => ({ meta: [
-  { title: 'Osteopata a Cantù | Angelo Barone' }, { name: 'description', content: 'Ricevo a Cantù in Via Giacomo Matteotti 18, dentro una farmacia. Scopri orari, tariffa e come contattarmi.' },
-  { property: 'og:title', content: 'Osteopata a Cantù | Angelo Barone' }, { property: 'og:description', content: 'Via Giacomo Matteotti 18, dentro una farmacia. Seduta 70 €. Scrivimi per prenotare.' }, { property: 'og:type', content: 'website' }, { name: 'twitter:card', content: 'summary_large_image' },
-] }), component: Cantu });
-function Cantu() { return <main><section className="site-container section-space grid lg:grid-cols-[1.2fr_.8fr] gap-12 lg:gap-24"><div><p className="text-sm mb-5">Dove ricevo</p><h1 className="display-heading text-[clamp(68px,8vw,120px)]">Cantù.</h1><p className="body-large mt-8 max-w-[620px]">Ricevo a Cantù, in Via Giacomo Matteotti 18, all'interno di una farmacia. Il parcheggio è disponibile.</p><div className="mt-10"><ContactButtons /></div></div><div className="bg-linen rounded-xl p-8 md:p-10 self-start"><h2 className="font-display text-5xl mb-8">Informazioni pratiche</h2><div className="border-t border-sand py-5"><p className="text-muted-foreground text-sm mb-2">Indirizzo</p><p className="text-lg">{place.address}</p><p className="text-sm mt-1">{place.note}</p></div><div className="border-t border-sand py-5"><p className="text-muted-foreground text-sm mb-2">Orari</p>{place.hours.map(hour => <p key={hour} className="leading-8">{hour}</p>)}</div><div className="border-t border-sand pt-5"><p className="text-muted-foreground text-sm mb-2">Tariffa</p><p className="text-2xl">{place.price}</p></div></div></section></main>; }
+  { title: 'Osteopata a Cantù | Angelo Barone' }, { name: 'description', content: 'Ricevo a Cantù in Via Giacomo Matteotti 18, presso una farmacia. Orari, tariffa e contatto WhatsApp.' },
+  { property: 'og:title', content: 'Osteopata a Cantù | Angelo Barone' }, { property: 'og:description', content: 'Via Giacomo Matteotti 18, presso farmacia. Seduta 70 €, parcheggio disponibile.' }, { property: 'og:type', content: 'website' }, { name: 'twitter:card', content: 'summary_large_image' }, ...ogImageMeta,
+] }), component: () => <LocationPage place={locations[1]} title="Cantù." intro="Ti aspetto a Cantù, in Via Giacomo Matteotti 18, nello studio presso la farmacia. Ricevo il mercoledì, giovedì e venerdì pomeriggio, e il parcheggio è disponibile." /> });
