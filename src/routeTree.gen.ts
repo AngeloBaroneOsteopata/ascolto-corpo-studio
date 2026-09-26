@@ -14,6 +14,7 @@ import { Route as ChiSonoRouteImport } from './routes/chi-sono'
 import { Route as SediCantuRouteImport } from './routes/sedi/cantu'
 import { Route as SediGiussanoRouteImport } from './routes/sedi/giussano'
 import { Route as SediSanDonatoMilaneseRouteImport } from './routes/sedi/san-donato-milanese'
+import { Route as TrattamentiSlugRouteImport } from './routes/trattamenti.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -40,6 +41,11 @@ const SediSanDonatoMilaneseRoute = SediSanDonatoMilaneseRouteImport.update({
   path: '/sedi/san-donato-milanese',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TrattamentiSlugRoute = TrattamentiSlugRouteImport.update({
+  id: '/trattamenti/$slug',
+  path: '/trattamenti/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -47,6 +53,7 @@ export interface FileRoutesByFullPath {
   '/sedi/cantu': typeof SediCantuRoute
   '/sedi/giussano': typeof SediGiussanoRoute
   '/sedi/san-donato-milanese': typeof SediSanDonatoMilaneseRoute
+  '/trattamenti/$slug': typeof TrattamentiSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +61,7 @@ export interface FileRoutesByTo {
   '/sedi/cantu': typeof SediCantuRoute
   '/sedi/giussano': typeof SediGiussanoRoute
   '/sedi/san-donato-milanese': typeof SediSanDonatoMilaneseRoute
+  '/trattamenti/$slug': typeof TrattamentiSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,6 +70,7 @@ export interface FileRoutesById {
   '/sedi/cantu': typeof SediCantuRoute
   '/sedi/giussano': typeof SediGiussanoRoute
   '/sedi/san-donato-milanese': typeof SediSanDonatoMilaneseRoute
+  '/trattamenti/$slug': typeof TrattamentiSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -71,6 +80,7 @@ export interface FileRouteTypes {
     | '/sedi/cantu'
     | '/sedi/giussano'
     | '/sedi/san-donato-milanese'
+    | '/trattamenti/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -78,6 +88,7 @@ export interface FileRouteTypes {
     | '/sedi/cantu'
     | '/sedi/giussano'
     | '/sedi/san-donato-milanese'
+    | '/trattamenti/$slug'
   id:
     | '__root__'
     | '/'
@@ -85,6 +96,7 @@ export interface FileRouteTypes {
     | '/sedi/cantu'
     | '/sedi/giussano'
     | '/sedi/san-donato-milanese'
+    | '/trattamenti/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -93,6 +105,7 @@ export interface RootRouteChildren {
   SediCantuRoute: typeof SediCantuRoute
   SediGiussanoRoute: typeof SediGiussanoRoute
   SediSanDonatoMilaneseRoute: typeof SediSanDonatoMilaneseRoute
+  TrattamentiSlugRoute: typeof TrattamentiSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -132,6 +145,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SediSanDonatoMilaneseRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/trattamenti/$slug': {
+      id: '/trattamenti/$slug'
+      path: '/trattamenti/$slug'
+      fullPath: '/trattamenti/$slug'
+      preLoaderRoute: typeof TrattamentiSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -141,6 +161,7 @@ const rootRouteChildren: RootRouteChildren = {
   SediCantuRoute: SediCantuRoute,
   SediGiussanoRoute: SediGiussanoRoute,
   SediSanDonatoMilaneseRoute: SediSanDonatoMilaneseRoute,
+  TrattamentiSlugRoute: TrattamentiSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
