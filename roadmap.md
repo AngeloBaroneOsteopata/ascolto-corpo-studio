@@ -4,3 +4,6 @@
 - [x] Rendere il diagramma dolore/origine interattivo al movimento, tocco e trascinamento.
 - [x] Rimuovere la foto hero generata e usare una texture astratta nei toni del brand.
 - [x] Verificare calore visivo e funzionamento su desktop/mobile.
+- [x] Foto reali (hero, trattamento, attestati) ospitate nel progetto.
+- [x] Sedi aggiornate (Giussano senza WhatsApp), sei pagine trattamenti con FAQ.
+- [x] FAQ a fisarmonica, nuovo menu, footer a colonne, meta tag e og:image.
