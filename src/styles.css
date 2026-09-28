@@ -56,6 +56,7 @@
 @utility site-container { width: min(100% - 48px, 1240px); margin-inline: auto; }
 @utility display-heading { font-family: "Cormorant Garamond", serif; font-weight: 400; line-height: .97; }
 @utility section-space { padding-block: clamp(78px, 10vw, 154px); }
+@utility section-compact { padding-block: clamp(40px, 5vw, 76px); }
 @utility body-large { font-size: clamp(17px, 1.45vw, 19px); line-height: 1.75; }
 @utility text-link { text-decoration: underline; text-underline-offset: 6px; text-decoration-color: var(--sand); }
 
