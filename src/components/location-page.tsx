@@ -23,15 +23,22 @@ function InfoPanel({ place, dark }: { place: Place; dark: boolean }) {
   );
 }
 
-export function LocationPage({ place, title, intro, featured = false, booking }: { place: Place; title: ReactNode; intro: string; featured?: boolean; booking?: ReactNode }) {
+export function LocationPage({ place, title, intro, featured = false, booking, photo }: { place: Place; title: ReactNode; intro: string; featured?: boolean; booking?: ReactNode; photo?: string }) {
   const others = locations.filter(l => l.slug !== place.slug);
   return (
     <main>
       <section className="section-space"><div className="site-container">
-        <div className="max-w-[560px]">
-          <h1 className="display-heading text-[38px] md:text-[42px]">{title}</h1>
-          <p className="mt-5 text-[17px] leading-[1.75]">{intro}</p>
-          <div className="mt-7">{booking ?? <Button asChild size="lg" className="h-11 px-6 text-[15px]"><a href={whatsapp} target="_blank" rel="noopener noreferrer"><MessageCircle /> Scrivimi su WhatsApp</a></Button>}</div>
+        <div className={photo ? 'grid lg:grid-cols-[1fr_440px] gap-10 lg:gap-14 items-start' : 'max-w-[560px]'}>
+          <div>
+            <h1 className="display-heading text-[38px] md:text-[42px]">{title}</h1>
+            <p className="mt-5 text-[17px] leading-[1.75]">{intro}</p>
+            <div className="mt-7">{booking ?? <Button asChild size="lg" className="h-11 px-6 text-[15px]"><a href={whatsapp} target="_blank" rel="noopener noreferrer"><MessageCircle /> Scrivimi su WhatsApp</a></Button>}</div>
+          </div>
+          {photo && (
+            <div className="rounded-2xl overflow-hidden w-full max-w-[440px] mx-auto lg:mx-0 aspect-[440/540]">
+              <img src={photo} alt={place.name} className="h-full w-full object-cover object-top" loading="lazy" />
+            </div>
+          )}
         </div>
       </div></section>
 
