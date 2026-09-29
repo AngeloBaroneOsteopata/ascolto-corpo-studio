@@ -48,10 +48,10 @@ export function LocationPage({ place, title, intro, featured = false, booking, p
           <InfoPanel place={place} dark={featured} />
           <div className="grid gap-6 content-start">
             {others.map(o => (
-              <Link key={o.slug} to={o.slug} className="bg-linen rounded-2xl p-6 block hover:bg-sand/40 transition-colors">
+              <Link key={o.slug} to={o.slug} className="bg-linen rounded-2xl p-6 block group">
                 <p className="font-display text-[22px]">{o.name}</p>
                 <p className="text-sm text-muted-foreground mt-2">{o.address}</p>
-                <p className="text-sm mt-3">{o.price}</p>
+                <p className="text-sm mt-3 text-[#2C3A2A] underline underline-offset-4 decoration-sand group-hover:decoration-[#2C3A2A] transition-colors">La sede</p>
               </Link>
             ))}
           </div>
