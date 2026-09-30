@@ -21,7 +21,7 @@ export const locations = [
   {
     name: 'Cantù', slug: '/sedi/cantu',
     address: 'Via Giacomo Matteotti 18, 22063 Cantù (CO)',
-    access: 'Studio presso farmacia',
+    access: 'Presso Farmacia Centrale',
     hours: ['Mercoledì, giovedì e venerdì · 15:00–19:30'],
     price: '70 € a seduta', note: 'Parcheggio disponibile',
   },
