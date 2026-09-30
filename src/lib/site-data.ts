@@ -28,9 +28,9 @@ export const locations = [
   {
     name: 'Giussano', slug: '/sedi/giussano',
     address: 'Via Filippo Corridoni 19, 20833 Giussano (MB)',
-    access: 'Presso CAP Salute, centro polispecialistico',
-    hours: ['Da lunedì a sabato'],
-    price: 'Tariffa convenzionata, contatta CAP Salute per la prenotazione', note: 'Prenotazione tramite CAP Salute',
+    access: 'Presso CAP Salute, Centro Polispecialistico Accreditato',
+    hours: ['Sabato · 14:00–18:00'],
+    price: 'Tariffa convenzionata, contatta CAP Salute', note: 'Prenotazione tramite CAP Salute',
   },
 ] as const;
 
