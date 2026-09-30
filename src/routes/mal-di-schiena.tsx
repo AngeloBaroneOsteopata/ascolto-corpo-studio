@@ -41,7 +41,7 @@ const h2 = 'font-display text-[28px] leading-tight mb-6';
 function MalDiSchiena() {
   const [sd, ...others] = locations;
   return <main>
-    <section className="section-compact"><div className="site-container max-w-[760px] mx-0">
+    <section className="section-compact"><div className="site-container">
       <nav aria-label="Breadcrumb" className="text-sm text-muted-foreground mb-6"><Link to="/" className="hover:underline">Home</Link> › <Link to="/" hash="trattamenti" className="hover:underline">Trattamenti</Link> › <span aria-current="page">Mal di schiena</span></nav>
       <h1 className="font-display text-[clamp(30px,3vw,36px)] leading-tight">Mal di schiena e lombalgia</h1>
       <p className="mt-4 leading-[1.7] max-w-[560px]">Mal di schiena e non sai bene da cosa dipenda? È da lì che parto sempre — capire prima di intervenire, lavorando sulla causa e non solo sul dolore del momento.</p>
@@ -69,7 +69,7 @@ function MalDiSchiena() {
 
     <section className="section-compact"><div className="site-container max-w-[820px] mx-0">
       <h2 className={h2}>Domande frequenti</h2>
-      <FaqList items={faqs} />
+      <FaqList items={faqs} /></div>
     </div></section>
   </main>;
 }
