@@ -23,7 +23,7 @@ function InfoPanel({ place, dark }: { place: Place; dark: boolean }) {
   );
 }
 
-export function LocationPage({ place, title, intro, featured = false, booking, photo }: { place: Place; title: ReactNode; intro: string; featured?: boolean; booking?: ReactNode; photo?: string }) {
+export function LocationPage({ place, title, intro, featured = false, booking, photo, otherPrices = false }: { place: Place; title: ReactNode; intro: string; featured?: boolean; booking?: ReactNode; photo?: string; otherPrices?: boolean }) {
   const others = locations.filter(l => l.slug !== place.slug);
   return (
     <main>
@@ -51,6 +51,7 @@ export function LocationPage({ place, title, intro, featured = false, booking, p
               <Link key={o.slug} to={o.slug} className="bg-linen rounded-2xl p-6 block group">
                 <p className="font-display text-[22px]">{o.name}</p>
                 <p className="text-sm text-muted-foreground mt-2">{o.address}</p>
+                {otherPrices && <p className="text-sm mt-2 font-medium">{o.price}</p>}
                 <p className="text-sm mt-3 text-[#2C3A2A] underline underline-offset-4 decoration-sand group-hover:decoration-[#2C3A2A] transition-colors">La sede</p>
               </Link>
             ))}
