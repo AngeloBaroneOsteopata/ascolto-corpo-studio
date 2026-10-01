@@ -15,6 +15,7 @@ import { Route as ChiSonoRouteImport } from './routes/chi-sono'
 import { Route as GravidanzaRouteImport } from './routes/gravidanza'
 import { Route as MalDiSchienaRouteImport } from './routes/mal-di-schiena'
 import { Route as OsteopatiaSportivaRouteImport } from './routes/osteopatia-sportiva'
+import { Route as PavimentoPelvicoRouteImport } from './routes/pavimento-pelvico'
 import { Route as SediCantuRouteImport } from './routes/sedi/cantu'
 import { Route as SediGiussanoRouteImport } from './routes/sedi/giussano'
 import { Route as SediSanDonatoMilaneseRouteImport } from './routes/sedi/san-donato-milanese'
@@ -50,6 +51,11 @@ const OsteopatiaSportivaRoute = OsteopatiaSportivaRouteImport.update({
   path: '/osteopatia-sportiva',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PavimentoPelvicoRoute = PavimentoPelvicoRouteImport.update({
+  id: '/pavimento-pelvico',
+  path: '/pavimento-pelvico',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SediCantuRoute = SediCantuRouteImport.update({
   id: '/sedi/cantu',
   path: '/sedi/cantu',
@@ -78,6 +84,7 @@ export interface FileRoutesByFullPath {
   '/gravidanza': typeof GravidanzaRoute
   '/mal-di-schiena': typeof MalDiSchienaRoute
   '/osteopatia-sportiva': typeof OsteopatiaSportivaRoute
+  '/pavimento-pelvico': typeof PavimentoPelvicoRoute
   '/sedi/cantu': typeof SediCantuRoute
   '/sedi/giussano': typeof SediGiussanoRoute
   '/sedi/san-donato-milanese': typeof SediSanDonatoMilaneseRoute
@@ -90,6 +97,7 @@ export interface FileRoutesByTo {
   '/gravidanza': typeof GravidanzaRoute
   '/mal-di-schiena': typeof MalDiSchienaRoute
   '/osteopatia-sportiva': typeof OsteopatiaSportivaRoute
+  '/pavimento-pelvico': typeof PavimentoPelvicoRoute
   '/sedi/cantu': typeof SediCantuRoute
   '/sedi/giussano': typeof SediGiussanoRoute
   '/sedi/san-donato-milanese': typeof SediSanDonatoMilaneseRoute
@@ -103,6 +111,7 @@ export interface FileRoutesById {
   '/gravidanza': typeof GravidanzaRoute
   '/mal-di-schiena': typeof MalDiSchienaRoute
   '/osteopatia-sportiva': typeof OsteopatiaSportivaRoute
+  '/pavimento-pelvico': typeof PavimentoPelvicoRoute
   '/sedi/cantu': typeof SediCantuRoute
   '/sedi/giussano': typeof SediGiussanoRoute
   '/sedi/san-donato-milanese': typeof SediSanDonatoMilaneseRoute
@@ -117,6 +126,7 @@ export interface FileRouteTypes {
     | '/gravidanza'
     | '/mal-di-schiena'
     | '/osteopatia-sportiva'
+    | '/pavimento-pelvico'
     | '/sedi/cantu'
     | '/sedi/giussano'
     | '/sedi/san-donato-milanese'
@@ -129,6 +139,7 @@ export interface FileRouteTypes {
     | '/gravidanza'
     | '/mal-di-schiena'
     | '/osteopatia-sportiva'
+    | '/pavimento-pelvico'
     | '/sedi/cantu'
     | '/sedi/giussano'
     | '/sedi/san-donato-milanese'
@@ -141,6 +152,7 @@ export interface FileRouteTypes {
     | '/gravidanza'
     | '/mal-di-schiena'
     | '/osteopatia-sportiva'
+    | '/pavimento-pelvico'
     | '/sedi/cantu'
     | '/sedi/giussano'
     | '/sedi/san-donato-milanese'
@@ -154,6 +166,7 @@ export interface RootRouteChildren {
   GravidanzaRoute: typeof GravidanzaRoute
   MalDiSchienaRoute: typeof MalDiSchienaRoute
   OsteopatiaSportivaRoute: typeof OsteopatiaSportivaRoute
+  PavimentoPelvicoRoute: typeof PavimentoPelvicoRoute
   SediCantuRoute: typeof SediCantuRoute
   SediGiussanoRoute: typeof SediGiussanoRoute
   SediSanDonatoMilaneseRoute: typeof SediSanDonatoMilaneseRoute
@@ -204,6 +217,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OsteopatiaSportivaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pavimento-pelvico': {
+      id: '/pavimento-pelvico'
+      path: '/pavimento-pelvico'
+      fullPath: '/pavimento-pelvico'
+      preLoaderRoute: typeof PavimentoPelvicoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sedi/cantu': {
       id: '/sedi/cantu'
       path: '/sedi/cantu'
@@ -242,6 +262,7 @@ const rootRouteChildren: RootRouteChildren = {
   GravidanzaRoute: GravidanzaRoute,
   MalDiSchienaRoute: MalDiSchienaRoute,
   OsteopatiaSportivaRoute: OsteopatiaSportivaRoute,
+  PavimentoPelvicoRoute: PavimentoPelvicoRoute,
   SediCantuRoute: SediCantuRoute,
   SediGiussanoRoute: SediGiussanoRoute,
   SediSanDonatoMilaneseRoute: SediSanDonatoMilaneseRoute,
