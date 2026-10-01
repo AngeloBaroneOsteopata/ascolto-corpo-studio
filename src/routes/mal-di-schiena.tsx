@@ -67,7 +67,7 @@ function MalDiSchiena() {
       </div>
     </div></section>
 
-    <section className="section-compact"><div className="site-container max-w-[820px] mx-0">
+    <section className="section-compact"><div className="site-container"><div className="max-w-[820px]">
       <h2 className={h2}>Domande frequenti</h2>
       <FaqList items={faqs} /></div>
     </div></section>
