@@ -14,6 +14,7 @@ import { Route as CervicaleRouteImport } from './routes/cervicale'
 import { Route as ChiSonoRouteImport } from './routes/chi-sono'
 import { Route as GravidanzaRouteImport } from './routes/gravidanza'
 import { Route as MalDiSchienaRouteImport } from './routes/mal-di-schiena'
+import { Route as OsteopatiaSportivaRouteImport } from './routes/osteopatia-sportiva'
 import { Route as SediCantuRouteImport } from './routes/sedi/cantu'
 import { Route as SediGiussanoRouteImport } from './routes/sedi/giussano'
 import { Route as SediSanDonatoMilaneseRouteImport } from './routes/sedi/san-donato-milanese'
@@ -44,6 +45,11 @@ const MalDiSchienaRoute = MalDiSchienaRouteImport.update({
   path: '/mal-di-schiena',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OsteopatiaSportivaRoute = OsteopatiaSportivaRouteImport.update({
+  id: '/osteopatia-sportiva',
+  path: '/osteopatia-sportiva',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SediCantuRoute = SediCantuRouteImport.update({
   id: '/sedi/cantu',
   path: '/sedi/cantu',
@@ -71,6 +77,7 @@ export interface FileRoutesByFullPath {
   '/chi-sono': typeof ChiSonoRoute
   '/gravidanza': typeof GravidanzaRoute
   '/mal-di-schiena': typeof MalDiSchienaRoute
+  '/osteopatia-sportiva': typeof OsteopatiaSportivaRoute
   '/sedi/cantu': typeof SediCantuRoute
   '/sedi/giussano': typeof SediGiussanoRoute
   '/sedi/san-donato-milanese': typeof SediSanDonatoMilaneseRoute
@@ -82,6 +89,7 @@ export interface FileRoutesByTo {
   '/chi-sono': typeof ChiSonoRoute
   '/gravidanza': typeof GravidanzaRoute
   '/mal-di-schiena': typeof MalDiSchienaRoute
+  '/osteopatia-sportiva': typeof OsteopatiaSportivaRoute
   '/sedi/cantu': typeof SediCantuRoute
   '/sedi/giussano': typeof SediGiussanoRoute
   '/sedi/san-donato-milanese': typeof SediSanDonatoMilaneseRoute
@@ -94,6 +102,7 @@ export interface FileRoutesById {
   '/chi-sono': typeof ChiSonoRoute
   '/gravidanza': typeof GravidanzaRoute
   '/mal-di-schiena': typeof MalDiSchienaRoute
+  '/osteopatia-sportiva': typeof OsteopatiaSportivaRoute
   '/sedi/cantu': typeof SediCantuRoute
   '/sedi/giussano': typeof SediGiussanoRoute
   '/sedi/san-donato-milanese': typeof SediSanDonatoMilaneseRoute
@@ -107,6 +116,7 @@ export interface FileRouteTypes {
     | '/chi-sono'
     | '/gravidanza'
     | '/mal-di-schiena'
+    | '/osteopatia-sportiva'
     | '/sedi/cantu'
     | '/sedi/giussano'
     | '/sedi/san-donato-milanese'
@@ -118,6 +128,7 @@ export interface FileRouteTypes {
     | '/chi-sono'
     | '/gravidanza'
     | '/mal-di-schiena'
+    | '/osteopatia-sportiva'
     | '/sedi/cantu'
     | '/sedi/giussano'
     | '/sedi/san-donato-milanese'
@@ -129,6 +140,7 @@ export interface FileRouteTypes {
     | '/chi-sono'
     | '/gravidanza'
     | '/mal-di-schiena'
+    | '/osteopatia-sportiva'
     | '/sedi/cantu'
     | '/sedi/giussano'
     | '/sedi/san-donato-milanese'
@@ -141,6 +153,7 @@ export interface RootRouteChildren {
   ChiSonoRoute: typeof ChiSonoRoute
   GravidanzaRoute: typeof GravidanzaRoute
   MalDiSchienaRoute: typeof MalDiSchienaRoute
+  OsteopatiaSportivaRoute: typeof OsteopatiaSportivaRoute
   SediCantuRoute: typeof SediCantuRoute
   SediGiussanoRoute: typeof SediGiussanoRoute
   SediSanDonatoMilaneseRoute: typeof SediSanDonatoMilaneseRoute
@@ -184,6 +197,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MalDiSchienaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/osteopatia-sportiva': {
+      id: '/osteopatia-sportiva'
+      path: '/osteopatia-sportiva'
+      fullPath: '/osteopatia-sportiva'
+      preLoaderRoute: typeof OsteopatiaSportivaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sedi/cantu': {
       id: '/sedi/cantu'
       path: '/sedi/cantu'
@@ -221,6 +241,7 @@ const rootRouteChildren: RootRouteChildren = {
   ChiSonoRoute: ChiSonoRoute,
   GravidanzaRoute: GravidanzaRoute,
   MalDiSchienaRoute: MalDiSchienaRoute,
+  OsteopatiaSportivaRoute: OsteopatiaSportivaRoute,
   SediCantuRoute: SediCantuRoute,
   SediGiussanoRoute: SediGiussanoRoute,
   SediSanDonatoMilaneseRoute: SediSanDonatoMilaneseRoute,
