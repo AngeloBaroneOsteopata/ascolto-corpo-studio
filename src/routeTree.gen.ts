@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CervicaleRouteImport } from './routes/cervicale'
 import { Route as ChiSonoRouteImport } from './routes/chi-sono'
+import { Route as GravidanzaRouteImport } from './routes/gravidanza'
 import { Route as MalDiSchienaRouteImport } from './routes/mal-di-schiena'
 import { Route as SediCantuRouteImport } from './routes/sedi/cantu'
 import { Route as SediGiussanoRouteImport } from './routes/sedi/giussano'
@@ -31,6 +32,11 @@ const CervicaleRoute = CervicaleRouteImport.update({
 const ChiSonoRoute = ChiSonoRouteImport.update({
   id: '/chi-sono',
   path: '/chi-sono',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GravidanzaRoute = GravidanzaRouteImport.update({
+  id: '/gravidanza',
+  path: '/gravidanza',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MalDiSchienaRoute = MalDiSchienaRouteImport.update({
@@ -63,6 +69,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cervicale': typeof CervicaleRoute
   '/chi-sono': typeof ChiSonoRoute
+  '/gravidanza': typeof GravidanzaRoute
   '/mal-di-schiena': typeof MalDiSchienaRoute
   '/sedi/cantu': typeof SediCantuRoute
   '/sedi/giussano': typeof SediGiussanoRoute
@@ -73,6 +80,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cervicale': typeof CervicaleRoute
   '/chi-sono': typeof ChiSonoRoute
+  '/gravidanza': typeof GravidanzaRoute
   '/mal-di-schiena': typeof MalDiSchienaRoute
   '/sedi/cantu': typeof SediCantuRoute
   '/sedi/giussano': typeof SediGiussanoRoute
@@ -84,6 +92,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/cervicale': typeof CervicaleRoute
   '/chi-sono': typeof ChiSonoRoute
+  '/gravidanza': typeof GravidanzaRoute
   '/mal-di-schiena': typeof MalDiSchienaRoute
   '/sedi/cantu': typeof SediCantuRoute
   '/sedi/giussano': typeof SediGiussanoRoute
@@ -96,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/cervicale'
     | '/chi-sono'
+    | '/gravidanza'
     | '/mal-di-schiena'
     | '/sedi/cantu'
     | '/sedi/giussano'
@@ -106,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/cervicale'
     | '/chi-sono'
+    | '/gravidanza'
     | '/mal-di-schiena'
     | '/sedi/cantu'
     | '/sedi/giussano'
@@ -116,6 +127,7 @@ export interface FileRouteTypes {
     | '/'
     | '/cervicale'
     | '/chi-sono'
+    | '/gravidanza'
     | '/mal-di-schiena'
     | '/sedi/cantu'
     | '/sedi/giussano'
@@ -127,6 +139,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CervicaleRoute: typeof CervicaleRoute
   ChiSonoRoute: typeof ChiSonoRoute
+  GravidanzaRoute: typeof GravidanzaRoute
   MalDiSchienaRoute: typeof MalDiSchienaRoute
   SediCantuRoute: typeof SediCantuRoute
   SediGiussanoRoute: typeof SediGiussanoRoute
@@ -155,6 +168,13 @@ declare module '@tanstack/react-router' {
       path: '/chi-sono'
       fullPath: '/chi-sono'
       preLoaderRoute: typeof ChiSonoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gravidanza': {
+      id: '/gravidanza'
+      path: '/gravidanza'
+      fullPath: '/gravidanza'
+      preLoaderRoute: typeof GravidanzaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mal-di-schiena': {
@@ -199,6 +219,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CervicaleRoute: CervicaleRoute,
   ChiSonoRoute: ChiSonoRoute,
+  GravidanzaRoute: GravidanzaRoute,
   MalDiSchienaRoute: MalDiSchienaRoute,
   SediCantuRoute: SediCantuRoute,
   SediGiussanoRoute: SediGiussanoRoute,
