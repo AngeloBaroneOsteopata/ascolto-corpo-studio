@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
+import { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { MessageCircle, Star } from 'lucide-react';
 import { LocationSummary } from '@/components/site-sections';
@@ -26,6 +27,14 @@ const steps = [
   { title: 'Ti spiego', description: 'Cosa ho trovato e cosa fare nei giorni successivi, in parole che puoi usare davvero.' },
 ];
 function Home() {
+  const reviewsWidget = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!reviewsWidget.current || document.querySelector('script[src="https://elfsightcdn.com/platform.js"]')) return;
+    const s = document.createElement('script');
+    s.src = 'https://elfsightcdn.com/platform.js';
+    s.async = true;
+    document.head.appendChild(s);
+  }, []);
   return <main>
     <section className="hero-scene" aria-labelledby="hero-title"><div className="site-container hero-content grid lg:grid-cols-[1.15fr_.85fr] gap-10 lg:gap-16 items-center"><div className="max-w-[680px]"><p className="text-sm font-medium mb-7">Angelo Barone · Osteopata D.O.</p><h1 id="hero-title" className="display-heading text-[clamp(58px,6.5vw,104px)]">Il tuo corpo parla. <em className="font-light">Io ascolto</em> prima di trattare.</h1><p className="mt-7 max-w-[480px] body-large">Prima di mettere le mani, voglio sapere da quando hai questo dolore, cosa lo peggiora, cosa hai già provato. Il punto in cui senti male raramente è il punto da cui parte il problema — per questo la prima parte del mio lavoro è capire, non intervenire.</p><div className="flex flex-wrap items-center gap-x-8 gap-y-5 mt-9"><Button asChild size="lg" className="h-13 px-7 text-[15px]"><a href={whatsapp} target="_blank" rel="noopener noreferrer"><MessageCircle/>Scrivimi su WhatsApp</a></Button><a href={googleReviews} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-medium"><Star className="size-4 fill-current"/> 4.9 su Google</a></div></div><img src={heroPhoto.url} alt="Ritratto di Angelo Barone, Osteopata D.O." width={440} height={540} className="hero-photo w-full max-w-[320px] lg:max-w-none lg:w-[440px] lg:h-[540px] lg:aspect-auto aspect-[4/5] object-cover object-top rounded-[16px] justify-self-center lg:justify-self-end" /></div></section>
 
