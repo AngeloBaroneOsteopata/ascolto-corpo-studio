@@ -35,6 +35,6 @@ export default defineConfig({
   tanstackStart: {
     server: { entry: "server" },
     pages,
-    prerender: { enabled: true, autoStaticPathsDiscovery: false },
+    prerender: { enabled: true, autoStaticPathsDiscovery: false, crawlLinks: false },
   },
 });
