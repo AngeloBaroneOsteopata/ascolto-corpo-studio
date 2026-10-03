@@ -12,4 +12,4 @@
 - Keep public content and location facts in `src/lib/site-data.ts`, shared by the homepage and location pages, so hours and prices stay consistent.
 - Keep the site static and use direct WhatsApp contact rather than online booking, because personal contact is part of the clinical method.
 - Keep the pain/origin diagram as the homepage's only prominent interactive illustration, implemented client-side without external media, so discovery responds to pointer, touch, and keyboard input.
-- Build prerenders every route to static HTML (list in vite.config.ts `pages`, router `trailingSlash: "always"`), output dist/client deployed to GitHub Pages — because Pages cannot run a server; add new routes to `pages`.
+- Build prerenders every route to static HTML (list in vite.config.ts `pages`, router `trailingSlash: "always"`, `nitro: false` so no server preset runs in CI), output dist/client deployed to GitHub Pages — because Pages cannot run a server; add new routes to `pages`.

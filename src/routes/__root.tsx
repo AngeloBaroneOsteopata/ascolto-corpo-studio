@@ -36,7 +36,7 @@ function RootComponent() {
 function SiteHeader() {
   const [open, setOpen] = useState(false);
   const links = [
-    { to: "/chi-sono", label: "Chi sono" },
+    { to: "/chi-sono/", label: "Chi sono" },
     { to: "/#trattamenti", label: "Trattamenti" },
     { to: "/#sedi", label: "Dove ricevo" },
     { to: "/#recensioni", label: "Recensioni" },
@@ -62,7 +62,7 @@ function SiteFooter() {
     <div className="site-container grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_.8fr_1fr_1fr] lg:gap-14">
       <div><Link to="/" className="font-display text-3xl leading-tight">Angelo Barone — Osteopata D.O.</Link><p className="mt-3 text-[15px] leading-relaxed max-w-[300px]">Osteopata con studio a San Donato Milanese, Cantù e Giussano.</p></div>
       <div><p className={heading}>Sedi</p><ul className="space-y-2 text-[15px]">{locations.map(l => <li key={l.slug}><Link to={l.slug}>{l.name}</Link></li>)}</ul></div>
-      <div><p className={heading}>Trattamenti</p><ul className="space-y-2 text-[15px]">{footerTreatments.map(slug => { const t = treatments.find(x => x.slug === slug)!; return <li key={slug}><Link to="/trattamenti/$slug" params={{ slug }}>{t.title}</Link></li>; })}</ul></div>
+      <div><p className={heading}>Trattamenti</p><ul className="space-y-2 text-[15px]">{footerTreatments.map(slug => { const t = treatments.find(x => x.slug === slug)!; return <li key={slug}><Link to="/trattamenti/$slug/" params={{ slug }}>{t.title}</Link></li>; })}</ul></div>
       <div><p className={heading}>Contatti</p><ul className="space-y-2 text-[15px]"><li><a href={phone.href}>{phone.label}</a></li><li><a href={`mailto:${email}`} className="break-all">{email}</a></li><li><a href={whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp</a></li></ul></div>
     </div>
     <div className="site-container border-t border-light-green/30 mt-12 pt-6 text-sm text-light-green leading-relaxed space-y-2"><p>Le informazioni contenute in questo sito hanno finalità divulgativa e non sostituiscono il parere di un professionista sanitario qualificato.</p><p>© 2026 Angelo Barone — Osteopata D.O. · P.IVA IT10629980961</p></div>

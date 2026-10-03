@@ -31,10 +31,10 @@ const pages = [
 ].map((path) => ({ path }));
 
 export default defineConfig({
-  nitro: { preset: "static" },
+  nitro: false,
   tanstackStart: {
     server: { entry: "server" },
     pages,
-    prerender: { enabled: true, autoStaticPathsDiscovery: false },
+    prerender: { enabled: true, autoStaticPathsDiscovery: false, crawlLinks: false },
   },
 });

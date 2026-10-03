@@ -12,21 +12,21 @@ export const ogImageMeta = [
 
 export const locations = [
   {
-    name: 'San Donato Milanese', slug: '/sedi/san-donato-milanese',
+    name: 'San Donato Milanese', slug: '/sedi/san-donato-milanese/',
     address: 'Via Enrico Mattei 54, 20097 San Donato (MI)',
     access: 'Ingresso piano terra a destra, primo piano',
     hours: ['Lunedì e martedì · 8:00–20:00', 'Mercoledì · 8:00–13:00', 'Sabato · 8:00–12:30'],
     price: '65 € a seduta (60 minuti)', note: 'Vicino MM3 San Donato',
   },
   {
-    name: 'Cantù', slug: '/sedi/cantu',
+    name: 'Cantù', slug: '/sedi/cantu/',
     address: 'Via Giacomo Matteotti 18, 22063 Cantù (CO)',
     access: 'Presso Farmacia Centrale',
     hours: ['Mercoledì, giovedì e venerdì · 15:00–19:30'],
     price: '70 € a seduta', note: 'Parcheggio disponibile',
   },
   {
-    name: 'Giussano', slug: '/sedi/giussano',
+    name: 'Giussano', slug: '/sedi/giussano/',
     address: 'Via Filippo Corridoni 19, 20833 Giussano (MB)',
     access: 'Presso CAP Salute, Centro Polispecialistico Accreditato',
     hours: ['Sabato · 14:00–18:00'],
