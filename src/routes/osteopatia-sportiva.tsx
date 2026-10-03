@@ -56,7 +56,7 @@ function OsteopatiaSportiva() {
       <h2 className={h2}>Come lavoro</h2>
       <ol className="relative pl-9"><span aria-hidden className="absolute left-[6px] top-[10px] bottom-[14px] w-[2px] bg-sand" />{steps.map(step => <li key={step.title} className="relative pb-7 last:pb-0"><span aria-hidden className="absolute top-[9px] -left-9 size-3.5 rounded-full bg-primary" /><h3 className="font-display text-2xl leading-tight">{step.title}</h3><p className="mt-1 text-muted-foreground leading-[1.7]">{step.description}</p></li>)}</ol>
       <p className="mt-8 text-sm">Vedi anche: <Link to="/" hash="trattamenti" className="text-link">Pavimento pelvico</Link></p>
-      <p className="mt-2 text-sm">Vedi anche: <Link to="/gravidanza" className="text-link">Gravidanza</Link></p>
+      <p className="mt-2 text-sm">Vedi anche: <Link to="/gravidanza/" className="text-link">Gravidanza</Link></p>
     </div></section>
 
     <section className="section-compact bg-linen/40"><div className="site-container">
